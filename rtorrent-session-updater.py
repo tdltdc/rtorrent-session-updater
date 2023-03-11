@@ -17,6 +17,7 @@ for file in files:
     with open(file, "r") as f:
         contents.append(f.read())
 
+# Extract parent directories from session files (there should be exactly one).
 parent_dir_lambda = lambda x: re.sub(r'.*tied_to_file\d+:(.*)\.rtorrent.*',
                                      r'\1', x)
 parent_dirs = list(set(list(map(parent_dir_lambda, contents))))
